@@ -7,10 +7,34 @@ Versions are the Velopack/nbgv release versions published to the
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-> **Mirror each release entry into the PUBLIC releases repo too.** This file lives in the private
-> source repo; operators and the public only see the **`rcti-meraki-photobooth-releases`** repo. When you cut a
-> release, copy that version's section into the **GitHub Release notes** for its `v<version>` tag
-> (and keep a copy of this file in the releases repo). See `deploy/RELEASING.md` → "Changelog".
+> **The release notes are mirrored automatically.** `deploy/build.ps1 -Publish` pulls this version's
+> section out of this file and sets it as the **GitHub Release notes** for the `v<version>` tag (via
+> `gh release edit`). So just keep this file current — add the new version's section *before* publishing
+> and it lands on the public release. This file lives in the private source repo; operators and the
+> public see the notes through the **`rcti-meraki-photobooth-releases`** release. See `deploy/RELEASING.md`.
+
+## [1.1.0] — 2026-06-18
+
+**Guided first-run setup.** A freshly installed booth now walks the operator through everything it
+needs before an event, instead of expecting them to find each setting on their own. Plus tools to
+hand the booth to a new client and a tidy uninstall.
+
+### Added
+- **First-run setup guide (M20).** The first time a new booth opens, a friendly full-screen guide
+  walks through naming the booth, choosing where photos are saved, picking the screen guests use, and
+  setting up the camera and printer — with optional steps for an online gallery and phone downloads. A
+  table-of-contents sidebar shows progress, the wording explains what each thing is (written for
+  someone new to the booth), and you can re-open the guide any time from **System → Re-run setup**.
+- **Phone downloads, made obvious (M20).** The booth now shows whether guest phone-downloads are
+  already set up, so you never repeat the one-time permission step. Turning it on is one click, and the
+  booth restarts itself to start serving — no more “remember to restart”.
+- **Reset booth for a new client (M20).** **System tab → Reset booth** clears all photo sessions,
+  events, and tickets and returns the booth to a fresh setup, while **keeping your templates and
+  design packs** and leaving saved photos on disk untouched.
+
+### Changed
+- **A clean uninstall (M20).** Uninstalling the booth now removes its data instead of leaving it
+  behind. The built-in templates and design packs come back automatically on the next install.
 
 ## [1.0.0] — 2026-06-18
 
@@ -165,6 +189,7 @@ next time they run **System tab → Check for updates**.
   release — the kiosk always stays locked down and printing always enabled. The
   "Developer mode" toggle still works in local DEBUG dev builds.
 
+[1.1.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.0.0
 [1.0.0-beta.120]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.0.0-beta.120
 [1.0.0-beta.118]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.0.0-beta.118
