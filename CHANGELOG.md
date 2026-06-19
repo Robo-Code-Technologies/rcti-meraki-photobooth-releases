@@ -7,11 +7,41 @@ Versions are the Velopack/nbgv release versions published to the
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-> **The release notes are mirrored automatically.** `deploy/build.ps1 -Publish` pulls this version's
-> section out of this file and sets it as the **GitHub Release notes** for the `v<version>` tag (via
-> `gh release edit`). So just keep this file current — add the new version's section *before* publishing
-> and it lands on the public release. This file lives in the private source repo; operators and the
-> public see the notes through the **`rcti-meraki-photobooth-releases`** release. See `deploy/RELEASING.md`.
+> **The changelog is mirrored automatically on publish.** `deploy/build.ps1 -Publish` (1) pulls this
+> version's section and sets it as the **GitHub Release notes** for the `v<version>` tag, and (2) pushes
+> this whole file into the PUBLIC **`rcti-meraki-photobooth-releases`** repo (operators/public see only
+> that repo). So just keep this file current — add the new version's section *before* publishing and both
+> land automatically. This file lives in the private source repo. See `deploy/RELEASING.md`.
+
+## [1.2.0] — 2026-06-20
+
+**One "Preview & Print" screen — and a much faster filter step.** After capturing, guests now see
+all their photos on a single screen that introduces each keepsake, lets them pick a look once, and
+prints — with no separate loading screens in between.
+
+### Added
+- **Preview & Print, all in one place.** The old separate preview, processing, and print screens are
+  now a single screen. When it opens it gives guests a short guided tour of everything they got — the
+  printed strip, the looping GIF, and the live video strip — sliding to each with a big label, then
+  settles on the strip. Guests can swipe between the keepsakes (the others peek in from the sides), and
+  a caption always names what they're looking at and whether it prints or goes to their phone.
+- **Print is instant.** The printable strip is now prepared in the background during the loading beat,
+  so pressing **Print** prints right away instead of waiting on a "compositing" screen.
+- **A clear way to skip the print (for testing/demos).** A deliberately low-key link sends the photos
+  to the phone without printing; guests who simply walk away still get their strip printed automatically.
+
+### Changed
+- **Pick a filter once, for everything.** The chosen look now applies to the printed strip, the GIF,
+  and the live strip together — the separate "also apply to my GIF / live strip" checkboxes are gone.
+- **A shorter, smoother flow.** The standalone "compositing" loading screen is retired (there's nothing
+  left to wait for after the background prep), and choosing to print now happens right on the preview
+  with a pop-out hand-off into the printing animation.
+
+### Fixed
+- **The "mixing your looks" wait is gone.** Building the eight filter previews used to take around 30
+  seconds because it re-processed the full-resolution photos for every look, one at a time. It now
+  shrinks the photos once and builds all the looks in parallel — the wait drops to roughly a second or
+  two. The post-capture "developing your strip" beat got the same speed-up.
 
 ## [1.1.0] — 2026-06-18
 
@@ -189,6 +219,7 @@ next time they run **System tab → Check for updates**.
   release — the kiosk always stays locked down and printing always enabled. The
   "Developer mode" toggle still works in local DEBUG dev builds.
 
+[1.2.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.0.0
 [1.0.0-beta.120]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.0.0-beta.120
