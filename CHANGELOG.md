@@ -13,6 +13,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 > that repo). So just keep this file current — add the new version's section *before* publishing and both
 > land automatically. This file lives in the private source repo. See `deploy/RELEASING.md`.
 
+## [1.2.1] — 2026-06-20
+
+**Polish and fixes for the new Preview & Print screen.** This refines the reveal, changes how
+walk-aways are handled, makes the post-capture wait dramatically faster, and fixes session media
+deletion in the operator console.
+
+### Changed
+- **A more cinematic Preview & Print reveal.** The keepsakes now fly up and fan out, hold for a beat,
+  then deal out one at a time, with a bolder headline and a longer, easier-to-read guided tour that
+  names each keepsake.
+- **Walk-aways now go to the phone, not the printer.** If a guest leaves the Preview & Print screen,
+  the booth no longer auto-prints; after five minutes of no activity it delivers the photos digitally
+  instead. Pressing **Print** still prints as before.
+- **The post-capture wait is much faster.** "Developing your strip" now takes roughly two to three
+  seconds instead of about seventeen — the animated strip and filters are prepared far more
+  efficiently (the look is applied while the photos are drawn, frames are lighter, and the strips
+  render in parallel).
+
+### Fixed
+- **Deleting a session's media fully clears it.** Deleting the photos for a session used to leave the
+  session behind as an empty shell full of "missing on disk" tiles that could never be cleared. Media
+  now deletes cleanly, leaving only the intended record stub for the audit trail. Sessions already
+  left in the broken state are repaired automatically on update.
+- **Re-picking a filter updates everything.** Changing the look after it was first applied now updates
+  the GIF and live video strip too, not just the printed strip.
+- **Removed a leftover "Ready to print?" step** that could briefly appear before the new Preview &
+  Print screen.
+
 ## [1.2.0] — 2026-06-20
 
 **One "Preview & Print" screen — and a much faster filter step.** After capturing, guests now see
@@ -219,6 +247,7 @@ next time they run **System tab → Check for updates**.
   release — the kiosk always stays locked down and printing always enabled. The
   "Developer mode" toggle still works in local DEBUG dev builds.
 
+[1.2.1]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.2.1
 [1.2.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.0.0
