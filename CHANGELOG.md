@@ -13,6 +13,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 > that repo). So just keep this file current — add the new version's section *before* publishing and both
 > land automatically. This file lives in the private source repo. See `deploy/RELEASING.md`.
 
+## [1.4.0] — 2026-06-20
+
+**A countdown guests can follow — and operator settings that apply without restarting the booth.**
+The capture screen now shows how long until the photo is taken, gets a cleaner look, and several
+settings that used to need a booth restart now take effect on the next session.
+
+### Added
+- **A countdown progress bar on the capture screen.** During the Auto Countdown, a slim bar fills
+  across the whole lead-in — the "Get ready" beat plus the 3·2·1 — so guests can see exactly when the
+  photo will be taken instead of being surprised by it. It eases to nearly full right as the shutter
+  fires.
+
+### Changed
+- **A cleaner capture screen.** The "Get ready" moment and the "Start Countdown" button were restyled
+  and right-sized — the button no longer covers the live view — and the countdown now reads
+  "Smile in… 3 · 2 · 1".
+- **Simpler Preview & Print actions.** "Change filter" is now a quiet link next to "No thanks", leaving
+  **Print my strip** as the single clear action.
+- **Auto Countdown timing now applies without a restart.** Changing the get-ready length, the countdown
+  length, or the tap-to-start option in Booth Defaults now takes effect on the very next session — no
+  need to restart the booth.
+- **Customer theme changes now apply without a restart.** Switching the booth's customer theme takes
+  effect the next time the booth returns to the welcome (attract) screen.
+- **"Mirror camera" now applies without a restart.** Turning mirroring on or off takes effect on the
+  next photo session.
+
 ## [1.3.0] — 2026-06-20
 
 **Operators can now mix and match how the shutter fires.** Tap to Capture used to be permanently on
@@ -260,6 +286,7 @@ next time they run **System tab → Check for updates**.
   release — the kiosk always stays locked down and printing always enabled. The
   "Developer mode" toggle still works in local DEBUG dev builds.
 
+[1.4.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.4.0
 [1.3.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.3.0
 [1.2.1]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.2.1
 [1.2.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.2.0
