@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 > that repo). So just keep this file current — add the new version's section *before* publishing and both
 > land automatically. This file lives in the private source repo. See `deploy/RELEASING.md`.
 
+## [1.3.0] — 2026-06-20
+
+**Operators can now mix and match how the shutter fires.** Tap to Capture used to be permanently on
+and couldn't be turned off. Now the capture modes are a free choice — turn on whichever the booth (or
+a specific event) should offer, in any combination, as long as at least one stays on.
+
+### Changed
+- **Capture modes are now a free multi-select.** In Booth Defaults and per-event settings, both **Tap
+  to Capture** and **Auto Countdown** can be switched on or off independently. The only rule is that at
+  least one must stay on — trying to turn off the last remaining mode snaps it back on. This makes
+  **Auto-Countdown-only** booths possible for the first time; when both modes are on, guests still pick
+  before capture, exactly as before.
+
 ## [1.2.1] — 2026-06-20
 
 **Polish and fixes for the new Preview & Print screen.** This refines the reveal, changes how
@@ -247,6 +260,7 @@ next time they run **System tab → Check for updates**.
   release — the kiosk always stays locked down and printing always enabled. The
   "Developer mode" toggle still works in local DEBUG dev builds.
 
+[1.3.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.3.0
 [1.2.1]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.2.1
 [1.2.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Robo-Code-Technologies/rcti-meraki-photobooth-releases/releases/tag/v1.1.0
